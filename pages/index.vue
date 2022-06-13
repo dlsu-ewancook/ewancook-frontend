@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <div>
+    <div class="mt-5">
         Landing Page
     </div>
 </template>
