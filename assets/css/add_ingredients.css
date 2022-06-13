@@ -1,0 +1,24 @@
+.quicksand-font {
+  font-family: 'Quicksand', sans-serif;
+}
+
+.btn-special {
+  background-color: #ED6A32;
+  color: white;
+  width: 100%;
+}
+
+.list-card {
+  background-color: lightgrey;
+  border-radius: 10px;
+  padding: .25rem 1rem
+}
+
+.list-card > img {
+  width: 50px
+}
+
+.list-card > span {
+  margin-left: 1rem;
+  font-weight: bold;
+}
