@@ -96,15 +96,15 @@ let backgroundImage = `url(${recipe.image})`;
                     <div class="card-body d-flex flex-column gap-1">
                         <div>
                             <div class="section-title fw-bold text-uppercase">Difficulty</div>
-                            <div class="metadata-desc text-uppercase">Medium</div>
+                            <div class="metadata-desc text-uppercase">{{ recipe.metadata.difficulty }}</div>
                         </div>
                         <div>
                             <div class="section-title fw-bold text-uppercase">Estimated Time</div>
-                            <div class="metadata-desc text-uppercase">70 Minutes</div>
+                            <div class="metadata-desc text-uppercase">{{ recipe.metadata.time }}</div>
                         </div>
                         <div>
                             <div class="section-title fw-bold text-uppercase">Servings</div>
-                            <div class="metadata-desc text-uppercase">4 Servings</div>
+                            <div class="metadata-desc text-uppercase">{{ recipe.metadata.servings }} Servings</div>
                         </div>
                     </div>
                 </div>
