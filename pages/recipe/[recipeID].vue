@@ -22,7 +22,7 @@ const { recipeID } = route.params;
 const primaryColor = '#ED6A32';
 
 let recipe: Recipe = {
-    id: parseInt(recipeID),
+    id: parseInt(recipeID as string),
     name: 'Pork Adobo Recipe',
     description: 'Basic Filipino Prok Adobo with Soy Sauce, Vinegar, and Garlic. This delicious dish is perfect when served over newly cooked white rice.',
     ingredients: [
@@ -58,13 +58,11 @@ let backgroundImage = `url(${recipe.image})`;
 
 <template>
     <HeaderVue />
-    <div class="banner">
-
-    </div>
-    <main class="container my-4">
+    <div class="banner" />
+    <div class="container my-4">
         <div class="d-flex flex-column flex-lg-row align-items-stretch gap-4">
             <!-- Recipe Card -->
-            <div class="card flex-fill p-4" id="recipeCard">
+            <main class="card flex-fill p-4" id="recipeCard">
                 <article class="card-body">
                     <h1 class="card-title fw-bold" id="recipeTitle">
                         {{ recipe.name }}
@@ -91,8 +89,8 @@ let backgroundImage = `url(${recipe.image})`;
                         </div>
                     </div>
                 </article>
-            </div>
-            <aside class="d-flex flex-column align-items-stretch gap-2 w-25">
+            </main>
+            <aside class="d-flex flex-column align-items-stretch gap-2">
                 <!-- Metadata -->
                 <div class="card p-3" id="metadataCard">
                     <div class="card-body d-flex flex-column gap-1">
@@ -111,7 +109,7 @@ let backgroundImage = `url(${recipe.image})`;
                     </div>
                 </div>
                 <!-- Video Instruction -->
-                <div class="d-flex flex-column align-items-end text-end" id="videoInstructionCard">
+                <div class="d-flex flex-column align-items-lg-end text-lg-end" id="videoInstructionCard">
                     <div id="videoInstructionTitle" class="fw-semibold">Video Instruction</div>
                     <iframe 
                         src="https://www.youtube.com/embed/{{ recipe.video }}" 
@@ -121,13 +119,13 @@ let backgroundImage = `url(${recipe.image})`;
                         allowfullscreen />
                 </div>
                 <!-- Recipe Link -->
-                <div class="d-flex flex-column align-items-end text-end" id="recipeLinkCard">
+                <div class="d-flex flex-column align-items-lg-end text-lg-end" id="recipeLinkCard">
                     <div>Learn more at</div>
                     <a href="{{ recipe.link }}" class="overflow-auto fw-bold">{{ recipe.link }}</a>
                 </div>
             </aside>
         </div>
-    </main>
+    </div>
 </template>
 
 <style scoped>
