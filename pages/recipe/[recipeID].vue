@@ -19,12 +19,12 @@ let backgroundImage = `url(${imageUrl})`;
             <!-- Recipe Card -->
             <div class="card flex-fill p-4" id="recipeCard">
                 <article class="card-body">
-                    <h1 class="card-title" id="recipeTitle">
+                    <h1 class="card-title fw-bold" id="recipeTitle">
                         Recipe {{ recipeID }}
                     </h1>
-                    <h2 class="card-text">Recipe {{ recipeID }} description</h2>
+                    <h2 class="card-text fs-4">Recipe {{ recipeID }} description</h2>
                     <div class="row" id="ingredientsList">
-                        <div class="section-title col-lg-2">Ingredients</div>
+                        <div class="section-title col-lg-2 text-uppercase fw-bold">Ingredients</div>
                         <div class="col-lg-10">
                             <ul>
                                 <li v-for="item in [1, 2, 3, 4]" :key="item">
@@ -34,7 +34,7 @@ let backgroundImage = `url(${imageUrl})`;
                         </div>
                     </div>
                     <div class="row" id="cookingInstructions">
-                        <div class="section-title col-lg-2">Cooking Instructions</div>
+                        <div class="section-title col-lg-2 text-uppercase fw-bold">Cooking Instructions</div>
                         <div class="col-lg-10">
                             <ol>
                                 <li v-for="item in [1, 2, 3, 4]" :key="item">
@@ -50,22 +50,22 @@ let backgroundImage = `url(${imageUrl})`;
                 <div class="card p-3" id="metadataCard">
                     <div class="card-body d-flex flex-column gap-1">
                         <div>
-                            <div class="section-title">Difficulty</div>
-                            <div class="metadata-desc">Medium</div>
+                            <div class="section-title fw-bold text-uppercase">Difficulty</div>
+                            <div class="metadata-desc text-uppercase">Medium</div>
                         </div>
                         <div>
-                            <div class="section-title">Estimated Time</div>
-                            <div class="metadata-desc">70 Minutes</div>
+                            <div class="section-title fw-bold text-uppercase">Estimated Time</div>
+                            <div class="metadata-desc text-uppercase">70 Minutes</div>
                         </div>
                         <div>
-                            <div class="section-title">Servings</div>
-                            <div class="metadata-desc">4 Servings</div>
+                            <div class="section-title fw-bold text-uppercase">Servings</div>
+                            <div class="metadata-desc text-uppercase">4 Servings</div>
                         </div>
                     </div>
                 </div>
                 <!-- Video Instruction -->
                 <div class="d-flex flex-column align-items-end text-end" id="videoInstructionCard">
-                    <div>Video Instruction</div>
+                    <div id="videoInstructionTitle" class="fw-semibold">Video Instruction</div>
                     <iframe 
                         src="https://www.youtube.com/embed/Ix5Dnud1bl0" 
                         title="YouTube video player" 
@@ -76,7 +76,7 @@ let backgroundImage = `url(${imageUrl})`;
                 <!-- Recipe Link -->
                 <div class="d-flex flex-column align-items-end text-end" id="recipeLinkCard">
                     <div>Learn more at</div>
-                    <a href="https://panlasangpinoy.com/filipino-food-pork-adobo-recipe/" class="overflow-auto">https://panlasangpinoy.com/filipino-food-pork-adobo-recipe/</a>
+                    <a href="https://panlasangpinoy.com/filipino-food-pork-adobo-recipe/" class="overflow-auto fw-bold">https://panlasangpinoy.com/filipino-food-pork-adobo-recipe/</a>
                 </div>
             </aside>
         </div>
@@ -105,12 +105,6 @@ let backgroundImage = `url(${imageUrl})`;
         
     .section-title {
         color: v-bind(primaryColor);
-        text-transform: uppercase;
-        font-weight: bold;
-    }
-
-    #recipeTitle {
-        font-weight: bold;
     }
 
     #recipeCard {
@@ -126,13 +120,13 @@ let backgroundImage = `url(${imageUrl})`;
         border-color: v-bind(primaryColor);
     }
 
-    .metadata-desc {
-        text-transform: uppercase;
-    }
-
     a {
         color: black;
-        font-weight: bold;
         text-decoration: none;
+    }
+
+    #videoInstructionTitle {
+        text-transform: uppercase;
+        color: #A3A1A1;
     }
 </style>
