@@ -1,12 +1,59 @@
 <script setup lang="ts">
 import HeaderVue from '~~/components/Header.vue';
 
+interface Recipe {
+    id: number;
+    name: string;
+    description: string;
+    ingredients: string[];
+    instructions: string[];
+    metadata: {
+        difficulty: string;
+        time: string;
+        servings: number;
+    };
+    video: string;
+    link: string;
+    image: string;
+}
+
 const route = useRoute();
 const { recipeID } = route.params;
 const primaryColor = '#ED6A32';
 
-let imageUrl = 'https://img-global.cpcdn.com/recipes/59343c2d877032eb/1200x630cq70/photo.jpg';
-let backgroundImage = `url(${imageUrl})`;
+let recipe: Recipe = {
+    id: parseInt(recipeID),
+    name: 'Pork Adobo Recipe',
+    description: 'Basic Filipino Prok Adobo with Soy Sauce, Vinegar, and Garlic. This delicious dish is perfect when served over newly cooked white rice.',
+    ingredients: [
+        '2 lbs pork belly',
+        '2 tablespoons garlic minced or crushed',
+        '5 pieces dried bay leaves',
+        '4 tablespoons vinegar',
+        '1/2 cup soy sauce',
+        '1 tablespoon peppercorn',
+        '2 cups water',
+        'Salt to taste'
+    ],
+    instructions: [
+        'Combine the pork belly, soy sauce, and garlic then marinade for at least 1 hour',
+        'Heat the pot and put-in the marinated pork belly then cook for a few minutes',
+        'Pour remaining marinade including garlic.',
+        'Add water, whole pepper corn, and dried bay leaves then bring to a boil. Simmer for 40 minutes to 1 hour',
+        'Put-in the vinegar and simmer for 12 to 15 minutes',
+        'Add salt to taste',
+        'Serve hot. Share and enjoy!',
+    ],
+    metadata: {
+        difficulty: 'medium',
+        time: '70 minutes',
+        servings: 4
+    },
+    video: 'Ix5Dnud1bl0',
+    link: 'https://panlasangpinoy.com/filipino-food-pork-adobo-recipe/',
+    image: 'https://panlasangpinoy.com/wp-content/uploads/2009/08/Best-Pork-Adobo-Recipe.jpg'
+}
+let backgroundImage = `url(${recipe.image})`;
 </script>
 
 <template>
@@ -14,20 +61,20 @@ let backgroundImage = `url(${imageUrl})`;
     <div class="banner">
 
     </div>
-    <main class="container mt-4">
+    <main class="container my-4">
         <div class="d-flex flex-column flex-lg-row align-items-stretch gap-4">
             <!-- Recipe Card -->
             <div class="card flex-fill p-4" id="recipeCard">
                 <article class="card-body">
                     <h1 class="card-title fw-bold" id="recipeTitle">
-                        Recipe {{ recipeID }}
+                        {{ recipe.name }}
                     </h1>
-                    <h2 class="card-text fs-4">Recipe {{ recipeID }} description</h2>
+                    <h2 class="card-text fs-4">{{ recipe.description }}</h2>
                     <div class="row" id="ingredientsList">
                         <div class="section-title col-lg-2 text-uppercase fw-bold">Ingredients</div>
                         <div class="col-lg-10">
                             <ul>
-                                <li v-for="item in [1, 2, 3, 4]" :key="item">
+                                <li v-for="item in recipe.ingredients" :key="item">
                                     {{ item }}
                                 </li>
                             </ul>
@@ -37,8 +84,8 @@ let backgroundImage = `url(${imageUrl})`;
                         <div class="section-title col-lg-2 text-uppercase fw-bold">Cooking Instructions</div>
                         <div class="col-lg-10">
                             <ol>
-                                <li v-for="item in [1, 2, 3, 4]" :key="item">
-                                    {{ item }}
+                                <li v-for="step in recipe.instructions" :key="step">
+                                    {{ step }}
                                 </li>
                             </ol>
                         </div>
@@ -67,7 +114,7 @@ let backgroundImage = `url(${imageUrl})`;
                 <div class="d-flex flex-column align-items-end text-end" id="videoInstructionCard">
                     <div id="videoInstructionTitle" class="fw-semibold">Video Instruction</div>
                     <iframe 
-                        src="https://www.youtube.com/embed/Ix5Dnud1bl0" 
+                        src="https://www.youtube.com/embed/{{ recipe.video }}" 
                         title="YouTube video player" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -76,7 +123,7 @@ let backgroundImage = `url(${imageUrl})`;
                 <!-- Recipe Link -->
                 <div class="d-flex flex-column align-items-end text-end" id="recipeLinkCard">
                     <div>Learn more at</div>
-                    <a href="https://panlasangpinoy.com/filipino-food-pork-adobo-recipe/" class="overflow-auto fw-bold">https://panlasangpinoy.com/filipino-food-pork-adobo-recipe/</a>
+                    <a href="{{ recipe.link }}" class="overflow-auto fw-bold">{{ recipe.link }}</a>
                 </div>
             </aside>
         </div>
