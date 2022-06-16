@@ -3,7 +3,21 @@
 </script>
 
 <template>
-    <div class="mt-5">
-        Landing Page
+    <div>
+        <Header />
+        <b-card
+        overlay
+        img-src="https://media.wired.com/photos/598e35fb99d76447c4eb1f28/16:9/w_2123,h_1194,c_limit/phonepicutres-TA.jpg"
+        img-alt="Card Image"
+        text-variant="white"
+        title="Image Overlay"
+        sub-title="Subtitle">
+            <h2>Streamline your<br>home cooking with</h2>
+            <h1>ewancook.</h1>
+
+            <h3>Search for recipes based on what<br>you have instead of shopping for<br>your recipe.</h3>
+
+            <b-button variant="outline-light">Search With Your Ingredients</b-button>
+        </b-card>
     </div>
 </template>
