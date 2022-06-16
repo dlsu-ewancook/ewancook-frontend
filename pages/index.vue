@@ -7,7 +7,7 @@
         <Header />
         <b-card
         overlay
-        img-src="https://media.wired.com/photos/598e35fb99d76447c4eb1f28/16:9/w_2123,h_1194,c_limit/phonepicutres-TA.jpg"
+        img-src=""
         img-alt="Card Image"
         text-variant="white"
         title="Image Overlay"
