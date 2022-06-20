@@ -1,66 +1,116 @@
 <script setup lang="ts">
 import Ingredient_card from "../../components/add_ingredients/ingredient_card.vue";
 const imageUrlDict = {
-  meats: "../../assets/images/cuts-of-pork.png",
-  others: "../../assets/images/cuts-of-beef.png",
+  pork: "../../assets/images/cuts-of-pork.png",
+  beef: "../../assets/images/cuts-of-beef.png",
+  chicken: "../../assets/images/chicken.png",
+  fish: "../../assets/images/fish-food.png",
+  fruits: "../../assets/images/group-of-fruits.png",
+  vegetables: "../../assets/images/group-of-vegetables.png",
+  spices: "../../assets/images/pepper-shaker.png",
 };
 
 const ingredients = [
   {
-    name: "Garlic",
-    type: "others",
-    image: "something",
-  },
-  {
     name: "Beef",
     type: "meats",
-    image: "something",
+    image: "beef",
+  },
+  {
+    name: "Chicken",
+    type: "meats",
+    image: "chicken",
+  },
+  {
+    name: "Fish",
+    type: "meats",
+    image: "fish",
   },
   {
     name: "Pork",
     type: "meats",
-    image: "something",
+    image: "pork",
   },
   {
-    name: "Beef1",
-    type: "meats",
-    image: "something",
+    name: "Fish Sauce",
+    type: "spices",
+    image: "spices",
   },
   {
-    name: "Pork1",
-    type: "meats",
-    image: "something",
+    name: "Pepper",
+    type: "spices",
+    image: "spices",
   },
   {
-    name: "Beef2",
-    type: "meats",
-    image: "something",
+    name: "Salt",
+    type: "spices",
+    image: "spices",
   },
   {
-    name: "Pork2",
-    type: "meats",
-    image: "something",
+    name: "Soy Sauce",
+    type: "spices",
+    image: "spices",
   },
   {
-    name: "Beef3",
-    type: "meats",
-    image: "something",
+    name: "Eggplant",
+    type: "vegetables",
+    image: "vegetables",
   },
   {
-    name: "Pork3",
-    type: "meats",
-    image: "something",
+    name: "Garlic",
+    type: "vegetables",
+    image: "vegetables",
+  },
+  {
+    name: "Lettuce",
+    type: "vegetables",
+    image: "vegetables",
+  },
+  {
+    name: "Apples",
+    type: "fruits",
+    image: "fruits",
+  },
+  {
+    name: "Bananas",
+    type: "fruits",
+    image: "fruits",
+  },
+  {
+    name: "Grapes",
+    type: "fruits",
+    image: "fruits",
+  },
+  {
+    name: "Mangoes",
+    type: "fruits",
+    image: "fruits",
+  },
+  {
+    name: "Oranges",
+    type: "fruits",
+    image: "fruits",
+  },
+  {
+    name: "Tomatoes",
+    type: "fruits",
+    image: "fruits",
   },
 ];
 
 let ingredient_list = ref([]);
 let searchQuery = ref("");
 
-function addToList(name, type) {
+function addToList(name, type, image) {
   ingredient_list.value.push({
     name,
     type,
+    image,
   });
+}
+
+function removeItem(index){
+  ingredient_list.value.splice(index, 1)
 }
 
 function getIngredients() {
@@ -71,8 +121,8 @@ function getIngredients() {
 }
 
 function searchRecipe() {
-  // Add search function here
-  alert(ingredient_list.value.length);
+  window.location.href = '/search/list_recipes'
+  // alert(ingredient_list.value.length);
 }
 </script>
 <template>
@@ -100,21 +150,38 @@ function searchRecipe() {
                   v-if="ingredient.type == 'meats'"
                   :title="ingredient.name"
                   :type="ingredient.type"
-                  @click="addToList(ingredient.name, ingredient.type)"
+                  :image="ingredient.image"
+                  @click="addToList(ingredient.name, ingredient.type, ingredient.image)"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <h1 class="quicksand-font">Spices</h1>
+            <div class="d-flex flex-wrap">
+              <div v-for="ingredient in getIngredients()">
+                <Ingredient_card
+                  class="me-2 mt-2"
+                  v-if="ingredient.type == 'spices'"
+                  :title="ingredient.name"
+                  :type="ingredient.type"
+                  :image="ingredient.image"
+                  @click="addToList(ingredient.name, ingredient.type, ingredient.image)"
                 />
               </div>
             </div>
           </div>
           <div class="row mt-3">
             <h1 class="quicksand-font">Vegetables</h1>
-           <div class="d-flex flex-wrap">
+            <div class="d-flex flex-wrap">
               <div v-for="ingredient in getIngredients()">
                 <Ingredient_card
                   class="me-2 mt-2"
                   v-if="ingredient.type == 'vegetables'"
                   :title="ingredient.name"
                   :type="ingredient.type"
-                  @click="addToList(ingredient.name, ingredient.type)"
+                  :image="ingredient.image"
+                  @click="addToList(ingredient.name, ingredient.type, ingredient.image)"
                 />
               </div>
             </div>
@@ -128,35 +195,8 @@ function searchRecipe() {
                   v-if="ingredient.type == 'fruits'"
                   :title="ingredient.name"
                   :type="ingredient.type"
-                  @click="addToList(ingredient.name, ingredient.type)"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="row mt-3">
-            <h1 class="quicksand-font">Condiments</h1>
-            <div class="d-flex flex-wrap">
-              <div v-for="ingredient in getIngredients()">
-                <Ingredient_card
-                  class="me-2 mt-2"
-                  v-if="ingredient.type == 'condiments'"
-                  :title="ingredient.name"
-                  :type="ingredient.type"
-                  @click="addToList(ingredient.name, ingredient.type)"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="row mt-3">
-            <h1 class="quicksand-font">Others</h1>
-            <div class="d-flex flex-wrap">
-              <div v-for="ingredient in getIngredients()">
-                <Ingredient_card
-                  class="me-2 mt-2"
-                  v-if="ingredient.type == 'others'"
-                  :title="ingredient.name"
-                  :type="ingredient.type"
-                  @click="addToList(ingredient.name, ingredient.type)"
+                  :image="ingredient.image"
+                  @click="addToList(ingredient.name, ingredient.type, ingredient.image)"
                 />
               </div>
             </div>
@@ -167,8 +207,8 @@ function searchRecipe() {
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Ingredient List</h5>
-            <div v-for="item in ingredient_list" class="list-card mt-2">
-              <img :src="imageUrlDict[item.type]" :alt="item.type" />
+            <div v-for="(item, index) in ingredient_list" class="list-card mt-2" @click="removeItem(index)">
+              <img :src="imageUrlDict[item.image]" :alt="item.type" />
               <span>{{ item.name }}</span>
             </div>
             <span v-if="ingredient_list.length == 0" class="text-secondary"
@@ -190,27 +230,31 @@ function searchRecipe() {
 
 <style>
 .quicksand-font {
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 
 .btn-special {
-  background-color: #ED6A32;
+  background-color: #ed6a32;
   color: white;
   width: 100%;
 }
 
 .list-card {
-  background-color: lightgrey;
+  background-color: rgb(233, 233, 233);
   border-radius: 10px;
-  padding: .25rem 1rem
+  padding: 0.25rem 1rem;
 }
 
 .list-card > img {
-  width: 50px
+  width: 50px;
 }
 
 .list-card > span {
   margin-left: 1rem;
   font-weight: bold;
+}
+
+.list-card:hover{
+  background-color: lightgrey;
 }
 </style>

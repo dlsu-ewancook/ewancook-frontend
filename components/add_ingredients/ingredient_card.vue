@@ -1,13 +1,19 @@
 <script setup lang="ts">
 
 const imageUrlDict = {
-  "meats": "../../assets/images/cuts-of-pork.png",
-  "others": "../../assets/images/cuts-of-beef.png"
+  pork: "../../assets/images/cuts-of-pork.png",
+  beef: "../../assets/images/cuts-of-beef.png",
+  chicken: "../../assets/images/chicken.png",
+  fish: "../../assets/images/fish-food.png",
+  fruits: "../../assets/images/group-of-fruits.png",
+  vegetables: "../../assets/images/group-of-vegetables.png",
+  spices: "../../assets/images/pepper-shaker.png",
 }
 
 defineProps({
   type: String,
-  title: String
+  title: String,
+  image: String,
 })
 
 </script>
@@ -24,7 +30,7 @@ defineProps({
   <div class="card card-width m-0 p-0">
     <div class="card-body">
       <img
-        :src="imageUrlDict[type]"
+        :src="imageUrlDict[image]"
         class="card-img-top"
         alt="card-img-top"
       />
