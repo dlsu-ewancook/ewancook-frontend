@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 
 interface Recipe {
     id: number;
@@ -54,7 +55,7 @@ let recipe: Recipe = {
 }
 let backgroundImage = `url(${recipe.image})`;
 
-
+let hoverIngredient = ref(null);
 </script>
 
 <template>
@@ -72,7 +73,7 @@ let backgroundImage = `url(${recipe.image})`;
                     <div class="row" id="ingredientsList">
                         <div class="section-title col-lg-2 text-uppercase fw-bold">Ingredients</div>
                         <div class="col-lg-10">
-                            <ul>
+                            <ul @mouseenter="hoverIngredient = 'Pork Belly'">
                                 <li v-for="item in recipe.ingredients" :key="item">
                                     {{ item }}
                                 </li>
@@ -124,6 +125,11 @@ let backgroundImage = `url(${recipe.image})`;
                     <div>Learn more at</div>
                     <a :href="recipe.link" class="overflow-auto fw-bold">{{ recipe.link }}</a>
                 </div>
+
+                <RecipeIngredientCard v-if="hoverIngredient"
+                    :title="hoverIngredient"
+                    img-url="https://upload.wikimedia.org/wikipedia/commons/4/49/Schweinebauch-2.jpg"
+                    :alternatives="['Pork Bacon', 'Beef Bacon', 'Pork butt', 'Soy', 'Tofu', 'Tempeh']" />
             </aside>
         </div>
     </div>
