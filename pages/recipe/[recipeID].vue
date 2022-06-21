@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import HeaderVue from '~~/components/Header.vue';
 
 interface Recipe {
     id: number;
@@ -54,10 +53,12 @@ let recipe: Recipe = {
     image: 'https://panlasangpinoy.com/wp-content/uploads/2009/08/Best-Pork-Adobo-Recipe.jpg'
 }
 let backgroundImage = `url(${recipe.image})`;
+
+
 </script>
 
 <template>
-    <HeaderVue />
+    <Header />
     <div class="banner" />
     <div class="container my-4">
         <div class="d-flex flex-column flex-lg-row align-items-stretch gap-4">
@@ -112,7 +113,7 @@ let backgroundImage = `url(${recipe.image})`;
                 <div class="d-flex flex-column align-items-lg-end text-lg-end" id="videoInstructionCard">
                     <div id="videoInstructionTitle" class="fw-semibold">Video Instruction</div>
                     <iframe 
-                        src="https://www.youtube.com/embed/{{ recipe.video }}" 
+                        :src="`https://www.youtube.com/embed/${ recipe.video }`" 
                         title="YouTube video player" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -121,7 +122,7 @@ let backgroundImage = `url(${recipe.image})`;
                 <!-- Recipe Link -->
                 <div class="d-flex flex-column align-items-lg-end text-lg-end" id="recipeLinkCard">
                     <div>Learn more at</div>
-                    <a href="{{ recipe.link }}" class="overflow-auto fw-bold">{{ recipe.link }}</a>
+                    <a :href="recipe.link" class="overflow-auto fw-bold">{{ recipe.link }}</a>
                 </div>
             </aside>
         </div>
@@ -129,6 +130,10 @@ let backgroundImage = `url(${recipe.image})`;
 </template>
 
 <style scoped>
+    * {
+        font-family: 'Quicksand', sans-serif;
+    }
+
     .banner {
         background-image: v-bind(backgroundImage);
         background-size: cover;
@@ -136,10 +141,6 @@ let backgroundImage = `url(${recipe.image})`;
         background-repeat: no-repeat;
         height: 10vh;
         min-height: 250px;
-    }
-
-    aside {
-        font-family: 'Quicksand', sans-serif;
     }
 
     @media (min-width: 992px) {
@@ -156,7 +157,6 @@ let backgroundImage = `url(${recipe.image})`;
         background-color: #F8F8F8;
         border-color: transparent;
         border-radius: 20px;
-        font-family: 'Quicksand', sans-serif;;
     }
 
     #metadataCard {
