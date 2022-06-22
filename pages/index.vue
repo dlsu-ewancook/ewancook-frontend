@@ -1,5 +1,5 @@
 <script setup lang="ts">
-
+const imgUrl = "https://media.istockphoto.com/photos/cooking-by-a-chef-italian-lasagna-frying-a-dressing-in-a-frying-pan-picture-id1186198866?k=20&m=1186198866&s=612x612&w=0&h=63bz4P540h1Yp0a-g65vCQfuqoliuZ_jRP6ZwOYBlXk="
 </script>
 
 <template>
@@ -25,7 +25,7 @@
                     </div>    
                 </div>
                 <div class="col-md-6">
-                    <img src="../assets/images/cooking.jpg" style="object-fit: cover; width:100%; height:100%; z-index: 0;">
+                    <img :src="imgUrl" style="object-fit: cover; width:100%; height:100%; z-index: 0;">
                 </div>
             </div> 
         </div>

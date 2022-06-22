@@ -9,5 +9,8 @@ export default defineNuxtConfig({
       {
         src: '/bootstrap.bundle.min.js',
       }
-    ]
+    ],
+    image: {
+      dir: 'assets/images'
+    }
 })
