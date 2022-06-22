@@ -25,7 +25,7 @@
                     </div>    
                 </div>
                 <div class="col-md-6">
-                    <img src="pages/images/cooking.jpg" style="object-fit: cover; width:100%; height:100%; z-index: 0;">
+                    <img src="../assets/images/cooking.jpg" style="object-fit: cover; width:100%; height:100%; z-index: 0;">
                 </div>
             </div> 
         </div>

@@ -29,7 +29,7 @@ let recipe: Recipe = {
     ingredients: [
         '2 lbs pork belly',
         '2 tablespoons garlic minced or crushed',
-        '5 pieces dried bay leaves',
+        '5 pieces dried bay leaves (optional)',
         '4 tablespoons vinegar',
         '1/2 cup soy sauce',
         '1 tablespoon peppercorn',
