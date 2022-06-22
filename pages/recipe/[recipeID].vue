@@ -73,8 +73,8 @@ let hoverIngredient = ref(null);
                     <div class="row" id="ingredientsList">
                         <div class="section-title col-lg-2 text-uppercase fw-bold">Ingredients</div>
                         <div class="col-lg-10">
-                            <ul @mouseenter="hoverIngredient = 'Pork Belly'">
-                                <li v-for="item in recipe.ingredients" :key="item">
+                            <ul>
+                                <li v-for="(item, i) in recipe.ingredients" :key="i" @mouseenter="hoverIngredient = i" @mouseleave="hoverIngredient = null">
                                     {{ item }}
                                 </li>
                             </ul>
@@ -126,10 +126,10 @@ let hoverIngredient = ref(null);
                     <a :href="recipe.link" class="overflow-auto fw-bold">{{ recipe.link }}</a>
                 </div>
 
-                <RecipeIngredientCard v-if="hoverIngredient"
-                    :title="hoverIngredient"
-                    img-url="https://upload.wikimedia.org/wikipedia/commons/4/49/Schweinebauch-2.jpg"
-                    :alternatives="['Pork Bacon', 'Beef Bacon', 'Pork butt', 'Soy', 'Tofu', 'Tempeh']" />
+                <RecipeIngredientCard v-if="hoverIngredient != null"
+                                        title="Pork Belly"
+                                        img-url="https://upload.wikimedia.org/wikipedia/commons/4/49/Schweinebauch-2.jpg"
+                                        :alternatives="['Pork Bacon', 'Beef Bacon', 'Pork butt', 'Soy', 'Tofu', 'Tempeh']" />
             </aside>
         </div>
     </div>
