@@ -97,7 +97,7 @@ let showTechniqueCard = ref(false);
                                         <strong v-if="word == 'marinade'" style="cursor: pointer;">
                                             {{word + " "}}
                                         </strong>
-                                        <span>
+                                        <span v-else>
                                             {{word + " "}}
                                         </span>
                                         
