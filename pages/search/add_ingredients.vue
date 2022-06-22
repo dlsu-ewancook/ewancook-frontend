@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import Ingredient_card from "../../components/add_ingredients/ingredient_card.vue";
 const imageUrlDict = {
-  pork: "../../assets/images/cuts-of-pork.png",
-  beef: "../../assets/images/cuts-of-beef.png",
-  chicken: "../../assets/images/chicken.png",
-  fish: "../../assets/images/fish-food.png",
-  fruits: "../../assets/images/group-of-fruits.png",
-  vegetables: "../../assets/images/group-of-vegetables.png",
-  spices: "../../assets/images/pepper-shaker.png",
+  pork: "https://raw.githubusercontent.com/dlsu-ewancook/ewancook-frontend/master/assets/images/cuts-of-pork.png",
+  beef: "https://raw.githubusercontent.com/dlsu-ewancook/ewancook-frontend/master/assets/images/cuts-of-beef.png",
+  chicken: "https://raw.githubusercontent.com/dlsu-ewancook/ewancook-frontend/master/assets/images/chicken.png",
+  fish: "https://raw.githubusercontent.com/dlsu-ewancook/ewancook-frontend/master/assets/images/fish-food.png",
+  fruits: "https://raw.githubusercontent.com/dlsu-ewancook/ewancook-frontend/master/assets/images/group-of-fruits.png",
+  vegetables: "https://raw.githubusercontent.com/dlsu-ewancook/ewancook-frontend/master/assets/images/group-of-vegetables.png",
+  spices: "https://raw.githubusercontent.com/dlsu-ewancook/ewancook-frontend/master/assets/images/pepper-shaker.png",
 };
 
 const ingredients = [
