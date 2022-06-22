@@ -20,7 +20,7 @@
                                 <h3 class="texts-nb" style="font-size:30px">Search for recipes based on what<br>you have instead of shoppping for<br>your recipe.</h3>
                             </div>
 
-                            <button type="button" href="\add_ingredients" class="btn btn-outline-light texts-nb" style="font-size:20px; margin-top:30px; margin-bottom:50px;">Search With Your Ingredients</button>
+                            <NuxtLink type="button" to="/search/add_ingredients" class="btn btn-outline-light texts-nb" style="font-size:20px; margin-top:30px; margin-bottom:50px;">Search With Your Ingredients</NuxtLink>
                         </div>
                     </div>    
                 </div>

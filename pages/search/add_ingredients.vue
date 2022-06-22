@@ -126,8 +126,9 @@ function searchRecipe() {
 }
 </script>
 <template>
-  <Header />
+  
   <div class="container">
+    <Header />
     <div class="row">
       <div class="col-9">
         <h1 class="quicksand-font fw-bold">Ingredients</h1>

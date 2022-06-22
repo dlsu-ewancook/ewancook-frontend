@@ -61,9 +61,11 @@ let showTechniqueCard = ref(false);
 </script>
 
 <template>
-    <Header />
+    <div class="mx-5">
+        <Header />
+    </div>
     <div class="banner" />
-    <div class="container my-4">
+    <div class="container mt-4">
         <div class="d-flex flex-column flex-lg-row align-items-stretch gap-4">
             <!-- Recipe Card -->
             <main class="card p-4 flex-grow" id="recipeCard">
@@ -91,16 +93,25 @@ let showTechniqueCard = ref(false);
                         <div class="col-lg-10">
                             <ol>
                                 <li v-for="step in recipe.instructions" :key="step" @click="showTechniqueCard = true">
-                                    {{ step }}
+                                    <span v-for="(word, index) in step.split(` `)" :key="index">
+                                        <strong v-if="word == 'marinade'" style="cursor: pointer;">
+                                            {{word + " "}}
+                                        </strong>
+                                        <span>
+                                            {{word + " "}}
+                                        </span>
+                                        
+                                    </span> 
                                 </li>
                             </ol>
                         </div>
                     </div>
                 </article>
-                <div>
-                    <h1>Other recipes you may like</h1>
-                </div>
+
             </main>
+            <!-- <div>
+                <h1>Other recipes you may like</h1>
+            </div> -->
             <aside class="d-flex flex-column align-items-stretch gap-2">
                 <!-- Metadata -->
                 <div class="card p-3" id="metadataCard">
@@ -189,5 +200,9 @@ let showTechniqueCard = ref(false);
     #videoInstructionTitle {
         text-transform: uppercase;
         color: #A3A1A1;
+    }
+
+    .container {
+        margin-bottom: 200px;
     }
 </style>
