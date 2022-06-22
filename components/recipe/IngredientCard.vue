@@ -7,7 +7,7 @@
 </script>
 
 <template>
-  <div class="card float-end">
+  <div class="card position-absolute top-50 end-0">
     <img :src="props.imgUrl" class="card-img-top" :alt="props.title">
     <div class="card-body" v-if="props.alternatives">
       <h5 class="card-title">

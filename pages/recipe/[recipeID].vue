@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { Modal } from 'bootstrap';
 
 interface Recipe {
     id: number;
@@ -56,6 +57,7 @@ let recipe: Recipe = {
 let backgroundImage = `url(${recipe.image})`;
 
 let hoverIngredient = ref(null);
+let showTechniqueCard = ref(false);
 </script>
 
 <template>
@@ -64,7 +66,7 @@ let hoverIngredient = ref(null);
     <div class="container my-4">
         <div class="d-flex flex-column flex-lg-row align-items-stretch gap-4">
             <!-- Recipe Card -->
-            <main class="card flex-fill p-4" id="recipeCard">
+            <main class="card p-4 flex-grow" id="recipeCard">
                 <article class="card-body">
                     <h1 class="card-title fw-bold" id="recipeTitle">
                         {{ recipe.name }}
@@ -74,8 +76,12 @@ let hoverIngredient = ref(null);
                         <div class="section-title col-lg-2 text-uppercase fw-bold">Ingredients</div>
                         <div class="col-lg-10">
                             <ul>
-                                <li v-for="(item, i) in recipe.ingredients" :key="i" @mouseenter="hoverIngredient = i" @mouseleave="hoverIngredient = null">
+                                <li class="position-relative" v-for="(item, i) in recipe.ingredients" :key="i" @mouseenter="hoverIngredient = i" @mouseleave="hoverIngredient = null">
                                     {{ item }}
+                                    <RecipeIngredientCard v-if="hoverIngredient === i"
+                                    title="Pork Belly"
+                                    img-url="https://upload.wikimedia.org/wikipedia/commons/4/49/Schweinebauch-2.jpg"
+                                    :alternatives="['Pork Bacon', 'Beef Bacon', 'Pork butt', 'Soy', 'Tofu', 'Tempeh']" />
                                 </li>
                             </ul>
                         </div>
@@ -84,13 +90,16 @@ let hoverIngredient = ref(null);
                         <div class="section-title col-lg-2 text-uppercase fw-bold">Cooking Instructions</div>
                         <div class="col-lg-10">
                             <ol>
-                                <li v-for="step in recipe.instructions" :key="step">
+                                <li v-for="step in recipe.instructions" :key="step" @click="showTechniqueCard = true">
                                     {{ step }}
                                 </li>
                             </ol>
                         </div>
                     </div>
                 </article>
+                <div>
+                    <h1>Other recipes you may like</h1>
+                </div>
             </main>
             <aside class="d-flex flex-column align-items-stretch gap-2">
                 <!-- Metadata -->
@@ -126,10 +135,11 @@ let hoverIngredient = ref(null);
                     <a :href="recipe.link" class="overflow-auto fw-bold">{{ recipe.link }}</a>
                 </div>
 
-                <RecipeIngredientCard v-if="hoverIngredient != null"
-                                        title="Pork Belly"
-                                        img-url="https://upload.wikimedia.org/wikipedia/commons/4/49/Schweinebauch-2.jpg"
-                                        :alternatives="['Pork Bacon', 'Beef Bacon', 'Pork butt', 'Soy', 'Tofu', 'Tempeh']" />
+                <RecipeTechniqueModal
+                    v-if="showTechniqueCard"
+                    title="Marinate"
+                    description="Marinating is the process of soaking foods in a seasoned, often acidic, liquid before cooking. It is commonly used to flavor foods and to tenderize tougher cuts of meat. The process may last seconds or days. "
+                    code="Ix5Dnud1bl0" />
             </aside>
         </div>
     </div>
